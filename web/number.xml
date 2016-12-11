@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="gb2312"?>
+
+<qamaitain>
+  <question type="select"> 
+    <id>1</id>  
+    <content>select1</content>  
+    <option num="A">ab</option>  
+    <option num="B">sb</option>  
+    <option num="C">df</option>  
+    <option num="D">bn</option>  
+    <answer>A</answer> 
+  </question>
+  <question type="fill"> 
+    <id>2</id>  
+    <content>asdfcxefwe</content>  
+    <blank/>  
+    <content>xcvbwer</content> 
+  </question>
+  <question type="judge"> 
+    <id>3</id>  
+    <content>cxzvxvwrwerew</content>  
+    <answer>true</answer> 
+  </question>
+  <question type="describe"> 
+    <id>7</id>  
+    <content>df</content> 
+  </question>
+</qamaitain>

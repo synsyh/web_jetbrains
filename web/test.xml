@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="gb2312"?>
+
+<qamaitain>
+    <question type="descrip">
+        <id>4</id>
+        <content>Please share with us your experimence.</content>
+        <stu_answer>这是学生写的答案</stu_answer>
+    </question>
+    <question type="descrip">
+        <id>6</id>
+        <content>Please share with us your experimence.</content>
+    </question>
+    <question type="descrip">
+        <id>9</id>
+        <content>Please share with us your experimence.</content>
+    </question>
+    <question type="descrip">
+        <id>11</id>
+        <content>Please share with us your experimence.</content>
+    </question>
+    <question type="select">
+        <id>7</id>
+        <content>1、“大煮干丝”是哪个菜系的代表菜之一( )。</content>
+        <option num="A">四川菜系</option>
+        <option num="B">山东菜系 </option>
+        <option num="C">广东菜系 </option>
+        <option num="D">淮扬菜系</option>
+        <stu_answer>a</stu_answer>
+        <answer>D</answer>
+    </question>
+    <question type="select">
+        <id>20</id>
+        <content>选择2</content>
+        <option num="A">optionA</option>
+        <option num="B">optionB</option>
+        <option num="C">optionC</option>
+        <option num="D">optionD</option>
+        <answer>D</answer>
+    </question>
+    <question type="select">
+        <id>28</id>
+        <content>选择3</content>
+        <option num="A">optionA</option>
+        <option num="B">optionB</option>
+        <option num="C">optionC</option>
+        <option num="D">optionD</option>
+        <answer>D</answer>
+    </question>
+    <question type="select">
+        <id>18</id>
+        <content>选择4</content>
+        <option num="A">optionA</option>
+        <option num="B">optionB</option>
+        <option num="C">optionC</option>
+        <option num="D">optionD</option>
+        <answer>D</answer>
+    </question>
+    <question type="fill">
+        <id>61</id>
+        <content>《西游记》里有一段描写唐僧师徒四人去西天取经过 火焰山 的故事。我国夏季时还真有一个十分炎热的火焰山，它位于</content>
+        <blank></blank>
+        <content>《西游记》里有一段描写唐僧师徒四人去西天取经过 火焰山 的故事。我国夏季时还真有一个十分炎热的火焰山，它位于</content>
+        <blank></blank>
+        <content>盘地。</content>
+    </question>
+    <question type="judge">
+        <id>19</id>
+        <content>动能修正系数与断面流速分布有关。</content>
+        <answer>true</answer>
+    </question>
+    <question type="judge">
+        <id>71</id>
+        <content>临界雷诺数的大小与流体的性质无关。</content>
+        <answer>true</answer>
+    </question>
+</qamaitain>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="gbk"?>
+<Root>
+  <stu>
+    <name>杨柳</name>
+    <id>20141120165</id>
+    <exam>
+      <id>2016120712</id>
+      <name>通信技术原理</name>
+      <teacher>李浩</teacher>
+      <grade>90</grade>
+      <select all="20">20</select>
+      <fill all="15">10</fill>
+      <judge all="15">20</judge>
+      <descrip all="50">40</descrip>
+    </exam>
+    <exam>
+      <id>2016120712</id>
+      <name>软件工程</name>
+      <teacher>李彤</teacher>
+      <grade>82</grade>
+      <select all="20">2</select>
+      <fill all="15">10</fill>
+      <judge all="15">20</judge>
+      <descrip all="50">50</descrip>
+    </exam>
+    <exam>
+      <id>2016120712</id>
+      <name>软件工程实验</name>
+      <teacher>李彤</teacher>
+      <grade>82</grade>
+      <select all="20">2</select>
+      <fill all="15">10</fill>
+      <judge all="15">20</judge>
+      <descrip all="50">50</descrip>
+    </exam>
+    <exam>
+      <id>2016120712</id>
+      <name>软件工程</name>
+      <teacher>李彤</teacher>
+      <grade>82</grade>
+      <select all="20">2</select>
+      <fill all="15">10</fill>
+      <judge all="15">20</judge>
+      <descrip all="50">50</descrip>
+    </exam>
+    <exam>
+      <id>2016120712</id>
+      <name>软件工程</name>
+      <teacher>李彤</teacher>
+      <grade>82</grade>
+      <select all="20">2</select>
+      <fill all="15">10</fill>
+      <judge all="15">20</judge>
+      <descrip all="50">50</descrip>
+    </exam>
+    <exam>
+      <id>2016120712</id>
+      <name>软件工程</name>
+      <teacher>李彤</teacher>
+      <grade>82</grade>
+      <select all="20">2</select>
+      <fill all="15">10</fill>
+      <judge all="15">20</judge>
+      <descrip all="50">50</descrip>
+    </exam>
+    <exam>
+      <id>2016120712</id>
+      <name>软件工程</name>
+      <teacher>李彤</teacher>
+      <grade>82</grade>
+      <select all="20">2</select>
+      <fill all="15">10</fill>
+      <judge all="15">20</judge>
+      <descrip all="50">50</descrip>
+    </exam>
+    <exam>
+      <id>2016120712</id>
+      <name>软件工程</name>
+      <teacher>李彤</teacher>
+      <grade>82</grade>
+      <select all="20">2</select>
+      <fill all="15">10</fill>
+      <judge all="15">20</judge>
+      <descrip all="50">50</descrip>
+    </exam>
+    <exam>
+      <id>2016120712</id>
+      <name>软件工程</name>
+      <teacher>李彤</teacher>
+      <grade>82</grade>
+      <select all="20">2</select>
+      <fill all="15">10</fill>
+      <judge all="15">20</judge>
+      <descrip all="50">50</descrip>
+    </exam>
+    <exam>
+      <id>2016120712</id>
+      <name>软件工程</name>
+      <teacher>李彤</teacher>
+      <grade>82</grade>
+      <select all="20">2</select>
+      <fill all="15">10</fill>
+      <judge all="15">20</judge>
+      <descrip all="50">50</descrip>
+    </exam>
+    <exam>
+      <id>2016120712</id>
+      <name>软件工程</name>
+      <teacher>李彤</teacher>
+      <grade>82</grade>
+      <select all="20">2</select>
+      <fill all="15">10</fill>
+      <judge all="15">20</judge>
+      <descrip all="50">50</descrip>
+    </exam>
+
+  </stu>
+  <stu>
+    <name>霍宗聖</name>
+    <id>20141120159</id>
+    <exam>
+      <id>2016120712</id>
+      <name>通信技术原理</name>
+      <teacher>李浩</teacher>
+      <grade>95</grade>
+      <select all="20">20</select>
+      <fill all="15">10</fill>
+      <judge all="15">20</judge>
+      <descrip all="50">40</descrip>
+    </exam>
+  </stu>
+</Root>

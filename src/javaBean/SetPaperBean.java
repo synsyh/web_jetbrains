@@ -1,0 +1,245 @@
+package javaBean;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by sunning on 2016/12/3.
+ */
+public class SetPaperBean {
+    private int selallmark, selmark;
+    private int filallmark, filmark;
+    private int desallmark, desmark;
+    private int judallmark, judmark;
+
+    private String className;
+
+    double selnum, filnum, desnum, judnum;
+    int random;
+    int[] allRandom = null;
+
+    private String separator = File.separator;
+    public String id;
+    File qstnFile = null;
+    File examFile = null;
+    XMLWriter writer = null; //  声明写XML的对象
+    SAXReader reader = new SAXReader();
+    Document allQstnDoc = null;
+    Document examQstnDoc = null;
+    Element allQstnRoot = null;
+    Element examQstnRoot = null;
+
+    String allQstnFilePath = separator + "Users" + separator +
+            "sunning" + separator + "Desktop" + separator + "QA" + separator;
+    String examQstnFilePath = separator + "Users" + separator +
+            "sunning" + separator + "Desktop" + separator + "QA" + separator + "exam" + separator;
+
+    public SetPaperBean(String className, String selallmark, String selmark, String filallmark, String filmark, String desallmark, String desmark, String judallmark, String judmark) {
+        this.className = className;
+        this.selallmark = Integer.valueOf(selallmark);
+        this.selmark = Integer.valueOf(selmark);
+        this.filallmark = Integer.valueOf(filallmark);
+        this.filmark = Integer.valueOf(filmark);
+        this.desallmark = Integer.valueOf(desallmark);
+        this.desmark = Integer.valueOf(desmark);
+        this.judallmark = Integer.valueOf(judallmark);
+        this.judmark = Integer.valueOf(judmark);
+        this.selnum = this.selallmark / this.selmark;
+        this.filnum = this.filallmark / this.filmark;
+        this.desnum = this.desallmark / this.desmark;
+        this.judnum = this.judallmark / this.judmark;
+    }
+
+    public void setPaper() throws IOException, DocumentException {
+        start();
+        System.out.println(examQstnRoot.getName());
+
+        List<Element> allSelQstn = null, allFilQstn = null, allJudQstn = null, allDesQstn = null;
+        List<Element> allQstn = allQstnRoot.elements("question");
+        allSelQstn = new ArrayList<>();
+        allDesQstn = new ArrayList<>();
+        allFilQstn = new ArrayList<>();
+        allJudQstn = new ArrayList<>();
+
+        for (Element ele : allQstn) {
+            String type = ele.attributeValue("type");
+            switch (type) {
+                case "select":
+                    allSelQstn.add(ele);
+                    break;
+                case "fill":
+                    allFilQstn.add(ele);
+                    break;
+                case "judge":
+                    allJudQstn.add(ele);
+                    break;
+                case "describe":
+                    allDesQstn.add(ele);
+                    break;
+                default:
+                    break;
+            }
+        }
+        examSel(allSelQstn, allQstn);
+        examFil(allFilQstn, allQstn);
+        examJud(allJudQstn, allQstn);
+        examDes(allDesQstn, allQstn);
+
+        end(examQstnDoc, examFile);
+        end(allQstnDoc, qstnFile);
+    }
+
+    public void examSel(List<Element> allSelQstn, List<Element> allQstn) {
+        for (int i = 0; i < selnum; i++) {
+            allRandom = new int[(int) selnum];
+            boolean flag = true;
+            random = (int) Math.round(Math.random()*(allSelQstn.size()-1));
+            for (int j = 0; j < selnum; j++) {
+                if (random == allRandom[j]) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                System.out.println(random);
+                allRandom[i] = random;
+            }
+        }
+        for (int i : allRandom) {
+            Element ele = allSelQstn.get(i);
+            Element eleClone=(Element)ele.clone();
+            Element eleMark=eleClone.addElement("mark");
+            eleMark.setText(String.valueOf(selmark));
+            examQstnRoot.add(eleClone);
+        }
+    }
+
+    public void examJud(List<Element> allJudQstn, List<Element> allQstn) {
+        for (int i = 0; i < judnum; i++) {
+            allRandom = new int[(int) judnum];
+            boolean flag = true;
+            random = (int) (Math.random() * (allJudQstn.size() - 1));
+            for (int j = 0; j < judnum; j++) {
+                if (random == allRandom[j]) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                System.out.println(random);
+                allRandom[i] = random;
+            }
+        }
+        for (int i : allRandom) {
+            Element ele = allJudQstn.get(i);
+            Element eleClone=(Element)ele.clone();
+            Element eleMark=eleClone.addElement("mark");
+            eleMark.setText(String.valueOf(judmark));
+            examQstnRoot.add(eleClone);
+        }
+    }
+
+    public void examFil(List<Element> allFilQstn, List<Element> allQstn) {
+        for (int i = 0; i < filnum; i++) {
+            allRandom = new int[(int) filnum];
+            boolean flag = true;
+            random = (int) (Math.random() * (allFilQstn.size() - 1));
+            for (int j = 0; j < filnum; j++) {
+                if (random == allRandom[j]) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                System.out.println(random);
+                allRandom[i] = random;
+            }
+        }
+        for (int i : allRandom) {
+            Element ele = allFilQstn.get(i);
+            Element eleClone=(Element)ele.clone();
+            Element eleMark=eleClone.addElement("mark");
+            eleMark.setText(String.valueOf(filmark));
+            examQstnRoot.add(eleClone);
+        }
+    }
+
+    public void examDes(List<Element> allDesQstn, List<Element> allQstn) {
+        for (int i = 0; i < desnum; i++) {
+            allRandom = new int[(int) desnum];
+            boolean flag = true;
+            random = (int) (Math.random() * (allDesQstn.size() - 1));
+            for (int j = 0; j < desnum; j++) {
+                if (random == allRandom[j]) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                System.out.println(random);
+                allRandom[i] = random;
+            }
+        }
+        for (int i : allRandom) {
+            Element ele = allDesQstn.get(i);
+            Element eleClone=(Element)ele.clone();
+            Element eleMark=eleClone.addElement("mark");
+            eleMark.setText(String.valueOf(desmark));
+            examQstnRoot.add(eleClone);
+        }
+    }
+
+    public void start() throws IOException, DocumentException {
+        examQstnFilePath += className + ".xml";
+        examFile = new File(examQstnFilePath);
+        if (examFile.exists()) {
+            SAXReader reader = new SAXReader();
+            examQstnDoc = reader.read(examFile);
+            examQstnRoot = examQstnDoc.getRootElement();
+        } else {
+            examQstnDoc = DocumentHelper.createDocument();
+            examQstnRoot = examQstnDoc.addElement("qamaitain");
+        }
+        allQstnFilePath += "test.xml";
+        qstnFile = new File(allQstnFilePath);
+        SAXReader reader = new SAXReader();
+        this.allQstnDoc = reader.read(qstnFile);
+        allQstnRoot = allQstnDoc.getRootElement();
+    }
+
+    public void end(Document doc, File file) throws IOException {
+        writer = new XMLWriter(new FileWriter(file), this.setformat());
+        writer.write(doc);
+        writer.close();
+    }
+
+    //TODO:添加节点和格式化操作
+
+    public void addNode(Element node, String nodeName, String text) {
+        Element newNode = node.addElement(nodeName);
+        newNode.setText(text);
+    }
+
+    public void addNode(Element node, String nodeName, String text, String attribute, String value) {
+        Element newNode = node.addElement(nodeName);
+        newNode.setText(text);
+        newNode.addAttribute(attribute, value);
+    }
+
+    public OutputFormat setformat() {
+        OutputFormat format = OutputFormat.createPrettyPrint();
+        format.setEncoding("gb2312");
+        return format;
+    }
+}
