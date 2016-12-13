@@ -28,9 +28,9 @@
         <url-pattern>/paper</url-pattern>
     </servlet-mapping>
     <servlet>
-    <servlet-name>stu_information</servlet-name>
-    <servlet-class>servlet.stu_informationServlet</servlet-class>
-</servlet>
+        <servlet-name>stu_information</servlet-name>
+        <servlet-class>servlet.stu_informationServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>stu_information</servlet-name>
         <url-pattern>/stu_information</url-pattern>
@@ -42,5 +42,45 @@
     <servlet-mapping>
         <servlet-name>stu_sys</servlet-name>
         <url-pattern>/stu_sys</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetQstnServlet</servlet-name>
+        <servlet-class>servlet.GetQstnServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SetPaperServlet</servlet-name>
+        <servlet-class>servlet.SetPaperServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetClassServlet</servlet-name>
+        <servlet-class>servlet.GetClassServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QstnDelServlet</servlet-name>
+        <servlet-class>servlet.QstnDelServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QstnEdiServlet</servlet-name>
+        <servlet-class>servlet.QstnEdiServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetQstnServlet</servlet-name>
+        <url-pattern>/setexam</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SetPaperServlet</servlet-name>
+        <url-pattern>/setpaper</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetClassServlet</servlet-name>
+        <url-pattern>/getclass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QstnDelServlet</servlet-name>
+        <url-pattern>/QstnDelServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QstnEdiServlet</servlet-name>
+        <url-pattern>/QstnEdiServlet</url-pattern>
     </servlet-mapping>
 </web-app>

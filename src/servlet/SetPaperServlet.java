@@ -1,6 +1,7 @@
 package servlet;
 
 import javaBean.SetPaperBean;
+import org.dom4j.DocumentException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +29,12 @@ public class SetPaperServlet extends HttpServlet {
         desmark = request.getParameter("desmark");
         judallmark = request.getParameter("judallmark");
         judmark = request.getParameter("judmark");
-        SetPaperBean setPaperBean = new SetPaperBean(classname, selallmark, selmark, filallmark, filmark, desallmark, desmark, judallmark, judmark);
+        try {
+            SetPaperBean setPaperBean = new SetPaperBean(classname, selallmark, selmark, filallmark, filmark, desallmark, desmark, judallmark, judmark);
+            setPaperBean.saveTactics();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

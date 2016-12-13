@@ -23,18 +23,25 @@ public class SetPaperBean {
     private int desallmark, desmark;
     private int judallmark, judmark;
 
-    private String className;
-
+    private String classNum;
     double selnum, filnum, desnum, judnum;
     int random;
     int[] allRandom = null;
 
     private String separator = File.separator;
     public String id;
-    File qstnFile = null;
-    File examFile = null;
+
+    //TODO:策略文件变量声明
+    private String tacticsFilePath;
+    private File tacticsFile;
+    Document tacticsDoc;
+    Element tacticsRoot;
+
     XMLWriter writer = null; //  声明写XML的对象
     SAXReader reader = new SAXReader();
+    File qstnFile = null;
+    File examFile = null;
+
     Document allQstnDoc = null;
     Document examQstnDoc = null;
     Element allQstnRoot = null;
@@ -45,8 +52,11 @@ public class SetPaperBean {
     String examQstnFilePath = separator + "Users" + separator +
             "sunning" + separator + "Desktop" + separator + "QA" + separator + "exam" + separator;
 
-    public SetPaperBean(String className, String selallmark, String selmark, String filallmark, String filmark, String desallmark, String desmark, String judallmark, String judmark) {
-        this.className = className;
+    public SetPaperBean() {
+    }
+
+    public SetPaperBean(String classNum, String selallmark, String selmark, String filallmark, String filmark, String desallmark, String desmark, String judallmark, String judmark) {
+        this.classNum = classNum;
         this.selallmark = Integer.valueOf(selallmark);
         this.selmark = Integer.valueOf(selmark);
         this.filallmark = Integer.valueOf(filallmark);
@@ -61,50 +71,117 @@ public class SetPaperBean {
         this.judnum = this.judallmark / this.judmark;
     }
 
-    public void setPaper() throws IOException, DocumentException {
-        start();
-        System.out.println(examQstnRoot.getName());
-
-        List<Element> allSelQstn = null, allFilQstn = null, allJudQstn = null, allDesQstn = null;
-        List<Element> allQstn = allQstnRoot.elements("question");
-        allSelQstn = new ArrayList<>();
-        allDesQstn = new ArrayList<>();
-        allFilQstn = new ArrayList<>();
-        allJudQstn = new ArrayList<>();
-
-        for (Element ele : allQstn) {
-            String type = ele.attributeValue("type");
-            switch (type) {
-                case "select":
-                    allSelQstn.add(ele);
-                    break;
-                case "fill":
-                    allFilQstn.add(ele);
-                    break;
-                case "judge":
-                    allJudQstn.add(ele);
-                    break;
-                case "describe":
-                    allDesQstn.add(ele);
-                    break;
-                default:
-                    break;
-            }
+    public void saveTactics() throws DocumentException, IOException {
+        tacticsFilePath = "/Users/sunning/Documents/web_jetbrains/web/" + "cls" + classNum + ".xml";
+        tacticsFile = new File(tacticsFilePath);
+        if (tacticsFile.exists()) {
+            reader = new SAXReader();
+            tacticsDoc = reader.read(tacticsFile);
+            tacticsRoot = tacticsDoc.getRootElement();
+        } else {
+            tacticsDoc = DocumentHelper.createDocument();
+            tacticsRoot = tacticsDoc.addElement("class");
+            addNode(tacticsRoot, "classnum", classNum);
+            addNode(tacticsRoot, "selallmark", String.valueOf(selallmark));
+            addNode(tacticsRoot, "selmark", String.valueOf(selmark));
+            addNode(tacticsRoot, "filallmark", String.valueOf(filallmark));
+            addNode(tacticsRoot, "filmark", String.valueOf(filmark));
+            addNode(tacticsRoot, "judallmark", String.valueOf(judallmark));
+            addNode(tacticsRoot, "judmark", String.valueOf(judmark));
+            addNode(tacticsRoot, "desallmark", String.valueOf(desallmark));
+            addNode(tacticsRoot, "desmark", String.valueOf(desmark));
         }
-        examSel(allSelQstn, allQstn);
-        examFil(allFilQstn, allQstn);
-        examJud(allJudQstn, allQstn);
-        examDes(allDesQstn, allQstn);
+        end(tacticsDoc, tacticsFile);
+    }
 
-        end(examQstnDoc, examFile);
-        end(allQstnDoc, qstnFile);
+    public void readTactics(String url) throws DocumentException {
+        tacticsFile = new File(url);
+        if (tacticsFile.exists()) {
+            SAXReader reader = new SAXReader();
+            tacticsDoc = reader.read(tacticsFile);
+            tacticsRoot = tacticsDoc.getRootElement();
+            this.selallmark = Integer.valueOf(tacticsRoot.element("selallmark").getText());
+            this.selmark = Integer.valueOf(tacticsRoot.element("selmark").getText());
+            this.filallmark = Integer.valueOf(tacticsRoot.element("filallmark").getText());
+            this.filmark = Integer.valueOf(tacticsRoot.element("filmark").getText());
+            this.judallmark = Integer.valueOf(tacticsRoot.element("judallmark").getText());
+            this.judmark = Integer.valueOf(tacticsRoot.element("judmark").getText());
+            this.desallmark = Integer.valueOf(tacticsRoot.element("desallmark").getText());
+            this.desmark = Integer.valueOf(tacticsRoot.element("desmark").getText());
+            this.selnum = this.selallmark / this.selmark;
+            this.filnum = this.filallmark / this.filmark;
+            this.desnum = this.desallmark / this.desmark;
+            this.judnum = this.judallmark / this.judmark;
+        } else {
+            System.out.println("file is not exists");
+        }
+    }
+
+    public void setPaper(String classNum, String id) throws DocumentException, IOException {
+        examQstnFilePath = "/Users/sunning/Documents/web_jetbrains/web/" + classNum + id + ".xml";
+        examFile = new File(examQstnFilePath);
+        if (examFile.exists()) {
+            SAXReader reader = new SAXReader();
+            examQstnDoc = reader.read(examFile);
+            examQstnRoot = examQstnDoc.getRootElement();
+        } else {
+            examQstnDoc = DocumentHelper.createDocument();
+            examQstnRoot = examQstnDoc.addElement("qamaitain");
+            allQstnFilePath += "test.xml";
+            qstnFile = new File(allQstnFilePath);
+            SAXReader reader = new SAXReader();
+            this.allQstnDoc = reader.read(qstnFile);
+//        System.out.println(allQstnDoc.getText());
+            allQstnRoot = allQstnDoc.getRootElement();
+
+            System.out.println(examQstnRoot.getName());
+
+            List<Element> allSelQstn = null, allFilQstn = null, allJudQstn = null, allDesQstn = null;
+            List<Element> allQstn = allQstnRoot.elements("question");
+            allSelQstn = new ArrayList<>();
+            allDesQstn = new ArrayList<>();
+            allFilQstn = new ArrayList<>();
+            allJudQstn = new ArrayList<>();
+
+            for (Element ele : allQstn) {
+                String type = ele.attributeValue("type");
+                switch (type) {
+                    case "select":
+                        allSelQstn.add(ele);
+                        break;
+                    case "fill":
+                        allFilQstn.add(ele);
+                        break;
+                    case "judge":
+                        allJudQstn.add(ele);
+                        break;
+                    case "describe":
+                        allDesQstn.add(ele);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            examSel(allSelQstn, allQstn);
+            examFil(allFilQstn, allQstn);
+            examJud(allJudQstn, allQstn);
+            examDes(allDesQstn, allQstn);
+
+            end(examQstnDoc, examFile);
+            end(allQstnDoc, qstnFile);
+        }
+    }
+
+    public Document getFile() throws DocumentException {
+//        System.out.println(tmp);
+        return examQstnDoc;
     }
 
     public void examSel(List<Element> allSelQstn, List<Element> allQstn) {
         for (int i = 0; i < selnum; i++) {
             allRandom = new int[(int) selnum];
             boolean flag = true;
-            random = (int) Math.round(Math.random()*(allSelQstn.size()-1));
+            random = (int) Math.round(Math.random() * (allSelQstn.size() - 1));
             for (int j = 0; j < selnum; j++) {
                 if (random == allRandom[j]) {
                     flag = false;
@@ -118,8 +195,8 @@ public class SetPaperBean {
         }
         for (int i : allRandom) {
             Element ele = allSelQstn.get(i);
-            Element eleClone=(Element)ele.clone();
-            Element eleMark=eleClone.addElement("mark");
+            Element eleClone = (Element) ele.clone();
+            Element eleMark = eleClone.addElement("mark");
             eleMark.setText(String.valueOf(selmark));
             examQstnRoot.add(eleClone);
         }
@@ -143,8 +220,8 @@ public class SetPaperBean {
         }
         for (int i : allRandom) {
             Element ele = allJudQstn.get(i);
-            Element eleClone=(Element)ele.clone();
-            Element eleMark=eleClone.addElement("mark");
+            Element eleClone = (Element) ele.clone();
+            Element eleMark = eleClone.addElement("mark");
             eleMark.setText(String.valueOf(judmark));
             examQstnRoot.add(eleClone);
         }
@@ -168,8 +245,8 @@ public class SetPaperBean {
         }
         for (int i : allRandom) {
             Element ele = allFilQstn.get(i);
-            Element eleClone=(Element)ele.clone();
-            Element eleMark=eleClone.addElement("mark");
+            Element eleClone = (Element) ele.clone();
+            Element eleMark = eleClone.addElement("mark");
             eleMark.setText(String.valueOf(filmark));
             examQstnRoot.add(eleClone);
         }
@@ -193,29 +270,45 @@ public class SetPaperBean {
         }
         for (int i : allRandom) {
             Element ele = allDesQstn.get(i);
-            Element eleClone=(Element)ele.clone();
-            Element eleMark=eleClone.addElement("mark");
+            Element eleClone = (Element) ele.clone();
+            Element eleMark = eleClone.addElement("mark");
             eleMark.setText(String.valueOf(desmark));
             examQstnRoot.add(eleClone);
         }
     }
 
-    public void start() throws IOException, DocumentException {
-        examQstnFilePath += className + ".xml";
-        examFile = new File(examQstnFilePath);
-        if (examFile.exists()) {
-            SAXReader reader = new SAXReader();
-            examQstnDoc = reader.read(examFile);
-            examQstnRoot = examQstnDoc.getRootElement();
+    //TODO:添加修改xml文件
+    public Element start(String filePath, String rootName) throws IOException, DocumentException {
+        File file;
+        SAXReader reader;
+        Document doc;
+        Element root;
+
+        file = new File(filePath);
+        if (file.exists()) {
+            reader = new SAXReader();
+            doc = reader.read(file);
+            root = doc.getRootElement();
         } else {
-            examQstnDoc = DocumentHelper.createDocument();
-            examQstnRoot = examQstnDoc.addElement("qamaitain");
+            doc = DocumentHelper.createDocument();
+            root = doc.addElement(rootName);
         }
-        allQstnFilePath += "test.xml";
-        qstnFile = new File(allQstnFilePath);
-        SAXReader reader = new SAXReader();
-        this.allQstnDoc = reader.read(qstnFile);
-        allQstnRoot = allQstnDoc.getRootElement();
+        return root;
+//        examQstnFilePath += className + ".xml";
+//        examFile = new File(examQstnFilePath);
+//        if (examFile.exists()) {
+//            SAXReader reader = new SAXReader();
+//            examQstnDoc = reader.read(examFile);
+//            examQstnRoot = examQstnDoc.getRootElement();
+//        } else {
+//            examQstnDoc = DocumentHelper.createDocument();
+//            examQstnRoot = examQstnDoc.addElement("qamaintain");
+//        }
+//        allQstnFilePath += "test.xml";
+//        qstnFile = new File(allQstnFilePath);
+//        SAXReader reader = new SAXReader();
+//        this.allQstnDoc = reader.read(qstnFile);
+//        allQstnRoot = allQstnDoc.getRootElement();
     }
 
     public void end(Document doc, File file) throws IOException {

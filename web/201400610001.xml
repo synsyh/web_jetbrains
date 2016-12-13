@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="gb2312"?>
+
+<qamaitain> 
+  <question type="select"> 
+    <id>2</id>  
+    <content>dsafasdasdf</content>  
+    <option num="A">er</option>  
+    <option num="B">cv</option>  
+    <option num="C">e</option>  
+    <option num="D">f</option>  
+    <answer>B</answer>  
+    <mark>20</mark> 
+  </question>  
+  <question type="fill"> 
+    <id>7</id>  
+    <content>asdfcxefwe</content>  
+    <blank/>  
+    <content>xcvbwer</content>  
+    <mark>20</mark> 
+  </question>  
+  <question type="judge"> 
+    <id>8</id>  
+    <content>cxzvxvwrwerew</content>  
+    <answer>true</answer>  
+    <mark>40</mark> 
+  </question>  
+  <question type="describe"> 
+    <id>4</id>  
+    <content>dfb</content>  
+    <mark>20</mark> 
+  </question>  
+  <question type="select"> 
+    <id>2</id>  
+    <content>dsafasdasdf</content>  
+    <option num="A">er</option>  
+    <option num="B">cv</option>  
+    <option num="C">e</option>  
+    <option num="D">f</option>  
+    <answer>B</answer>  
+    <mark>20</mark> 
+  </question>  
+  <question type="fill"> 
+    <id>7</id>  
+    <content>asdfcxefwe</content>  
+    <blank/>  
+    <content>xcvbwer</content>  
+    <mark>20</mark> 
+  </question>  
+  <question type="judge"> 
+    <id>8</id>  
+    <content>cxzvxvwrwerew</content>  
+    <answer>true</answer>  
+    <mark>40</mark> 
+  </question>  
+  <question type="describe"> 
+    <id>3</id>  
+    <content>df</content>  
+    <mark>20</mark> 
+  </question>  
+  <question type="select"> 
+    <id>2</id>  
+    <content>dsafasdasdf</content>  
+    <option num="A">er</option>  
+    <option num="B">cv</option>  
+    <option num="C">e</option>  
+    <option num="D">f</option>  
+    <answer>B</answer>  
+    <mark>20</mark> 
+  </question>  
+  <question type="fill"> 
+    <id>7</id>  
+    <content>asdfcxefwe</content>  
+    <blank/>  
+    <content>xcvbwer</content>  
+    <mark>20</mark> 
+  </question>  
+  <question type="judge"> 
+    <id>8</id>  
+    <content>cxzvxvwrwerew</content>  
+    <answer>true</answer>  
+    <mark>40</mark> 
+  </question>  
+  <question type="describe"> 
+    <id>4</id>  
+    <content>dfb</content>  
+    <mark>20</mark> 
+  </question>  
+  <question type="select"> 
+    <id>2</id>  
+    <content>dsafasdasdf</content>  
+    <option num="A">er</option>  
+    <option num="B">cv</option>  
+    <option num="C">e</option>  
+    <option num="D">f</option>  
+    <answer>B</answer>  
+    <mark>20</mark> 
+  </question>  
+  <question type="fill"> 
+    <id>7</id>  
+    <content>asdfcxefwe</content>  
+    <blank/>  
+    <content>xcvbwer</content>  
+    <mark>20</mark> 
+  </question>  
+  <question type="judge"> 
+    <id>8</id>  
+    <content>cxzvxvwrwerew</content>  
+    <answer>true</answer>  
+    <mark>40</mark> 
+  </question>  
+  <question type="describe"> 
+    <id>3</id>  
+    <content>df</content>  
+    <mark>20</mark> 
+  </question>  
+  <question type="select"> 
+    <id>6</id>  
+    <content>weqrweq</content>  
+    <option num="A">dog</option>  
+    <option num="B">ggg</option>  
+    <option num="C">hhhh</option>  
+    <option num="D">rrr</option>  
+    <answer>B</answer>  
+    <mark>20</mark> 
+  </question>  
+  <question type="fill"> 
+    <id>7</id>  
+    <content>asdfcxefwe</content>  
+    <blank/>  
+    <content>xcvbwer</content>  
+    <mark>20</mark> 
+  </question>  
+  <question type="judge"> 
+    <id>8</id>  
+    <content>cxzvxvwrwerew</content>  
+    <answer>true</answer>  
+    <mark>40</mark> 
+  </question>  
+  <question type="describe"> 
+    <id>4</id>  
+    <content>dfb</content>  
+    <mark>20</mark> 
+  </question>  
+  <question type="select"> 
+    <id>6</id>  
+    <content>weqrweq</content>  
+    <option num="A">dog</option>  
+    <option num="B">ggg</option>  
+    <option num="C">hhhh</option>  
+    <option num="D">rrr</option>  
+    <answer>B</answer>  
+    <mark>20</mark> 
+  </question>  
+  <question type="fill"> 
+    <id>7</id>  
+    <content>asdfcxefwe</content>  
+    <blank/>  
+    <content>xcvbwer</content>  
+    <mark>20</mark> 
+  </question>  
+  <question type="judge"> 
+    <id>8</id>  
+    <content>cxzvxvwrwerew</content>  
+    <answer>true</answer>  
+    <mark>40</mark> 
+  </question>  
+  <question type="describe"> 
+    <id>4</id>  
+    <content>dfb</content>  
+    <mark>20</mark> 
+  </question>  
+  <question type="select"> 
+    <id>6</id>  
+    <content>weqrweq</content>  
+    <option num="A">dog</option>  
+    <option num="B">ggg</option>  
+    <option num="C">hhhh</option>  
+    <option num="D">rrr</option>  
+    <answer>B</answer>  
+    <mark>20</mark>
+  </question>
+  <question type="fill"> 
+    <id>7</id>  
+    <content>asdfcxefwe</content>  
+    <blank/>  
+    <content>xcvbwer</content>  
+    <mark>20</mark>
+  </question>
+  <question type="judge"> 
+    <id>8</id>  
+    <content>cxzvxvwrwerew</content>  
+    <answer>true</answer>  
+    <mark>40</mark>
+  </question>
+  <question type="describe"> 
+    <id>4</id>  
+    <content>dfb</content>  
+    <mark>20</mark>
+  </question>
+</qamaitain>
