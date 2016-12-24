@@ -23,7 +23,7 @@
         <div id="select"></div>
         <div id="fill"></div>
         <div id="judge"></div>
-        <div id="descrip"></div>
+        <div id="describe"></div>
         <button type="submit" class="btn-primary submit_button">提交</button>
     </form>
 
@@ -55,7 +55,6 @@
     })
     //-->
 </script>
-<button onclick="ajaxXML()">test</button>
 <script>
     var content;
     function getXMLHttpRequest() {
@@ -134,12 +133,15 @@
 
                         for (var j = 0; j < num_t - 1; j++) {
                             if (next.nodeName != "blank") {
+                                if(next.nodeName=="stu_answer")
+                                    continue;
                                 fill +=
                                     '<div class="input-group">' +
                                     '<span class="input-group-addon">' +
                                     next.childNodes[0].nodeValue +
                                     '</span>';
                             }
+
                             if (next.nodeName == "blank")
                                 fill += '<input type="text" required="required" class="form-control" name=' + name_id + '>';
                             if (next.nodeName != "blank")
@@ -150,11 +152,11 @@
                         fill = fill + '</div>' + '</div>';
                         document.getElementById("fill").innerHTML = fill;
                     }
-                    if (question[i].getAttribute("type") == "descrip") {
+                    if (question[i].getAttribute("type") == "describe") {
                         num++;
                         var name_id = question[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
                         store.push(name_id);
-                        descrip +=
+                        describe +=
                             '<div class="panel panel-success">' +
                             '<div class="panel-heading">' +
                             "简答题" +
@@ -166,7 +168,7 @@
                             '<textarea class="form-control" rows="3" id="1" name=' + name_id + '>' + '</textarea>' +
                             '</div>' +
                             '</div>';
-                        document.getElementById("descrip").innerHTML = descrip;
+                        document.getElementById("describe").innerHTML = describe;
                     }
                     if (question[i].getAttribute("type") == "judge") {
                         var name_id = question[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
@@ -214,7 +216,7 @@
 //        }
 //        var content = '';
 //        var fill = '';
-//        var descrip = '';
+//        var describe = '';
 //        var judge = '';
 //        var xmldoc = xml.responseXML;
 //        var questions = xmldoc.getElementsByTagName("question");
@@ -291,11 +293,11 @@
 //                fill = fill + '</div>' + '</div>';
 //                document.getElementById("fill").innerHTML = fill;
 //            }
-//            if (question[i].getAttribute("type") == "descrip") {
+//            if (question[i].getAttribute("type") == "describe") {
 //                num++;
 //                var name_id = question[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
 //                store.push(name_id);
-//                descrip +=
+//                describe +=
 //                    '<div class="panel panel-success">' +
 //                    '<div class="panel-heading">' +
 //                    "简答题" +
@@ -307,7 +309,7 @@
 //                    '<textarea class="form-control" rows="3" id="1" name=' + name_id + '>' + '</textarea>' +
 //                    '</div>' +
 //                    '</div>';
-//                document.getElementById("descrip").innerHTML = descrip;
+//                document.getElementById("describe").innerHTML = describe;
 //            }
 //            if (question[i].getAttribute("type") == "judge") {
 //                var name_id = question[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;

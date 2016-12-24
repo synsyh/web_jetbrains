@@ -1,69 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>管理试题</title>
     <link href="dist/css/bootstrap.css" rel="stylesheet">
-    <script type="text/javascript" src="dist/js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="dist/js/bootstrap.js"></script>
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <title>管理试题</title>
+    <script src="dist/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript">
-        $(function () {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    myFunction(this);
-                }
-            };
-            xhttp.open("GET", "test.xml?t=" + Math.random(), true);
-            xhttp.send();
-        });
-        function myFunction(xml) {
-            var content = "";
-            var answer = "";
-            var type;
-            var ele;
-            var tagName;
-            var i = 0;
-            var id;
-
-            var xmlDoc = xml.responseXML;
-            var x = xmlDoc.getElementsByTagName("question");
-            for (; i < x.length; i++) {
-                var div = document.createElement("tr");
-                div.setAttribute("qstnID", i);
-                ele = x[i].firstElementChild;
-                type = x[i].getAttribute("type");
-                while (null != ele) {
-                    tagName = ele.nodeName;
-                    switch (tagName) {
-                        case "id":
-                            id = ele.childNodes[0].nodeValue;
-                            break;
-                        case "content":
-                            content += ele.childNodes[0].nodeValue;
-                            break;
-                        case "option":
-                            content += "<br/>";
-                            content += ele.childNodes[0].nodeValue;
-                            break;
-                        case "answer":
-                            answer += ele.childNodes[0].nodeValue;
-                            break;
-                    }
-                    ele = ele.nextElementSibling;
-                }
-
-                div.innerHTML = "<td>" + id +
-                    "</td><td>" + type + "</td><td>" + content + "</td><td>" + answer + "</td><td>"
-                    + "<button onclick='del(" + i + ")' class='btn btn-xs btn-danger'name=" + i + ">delete</button>"
-                    + "<button onclick='edi(" + i + ")' class='btn btn-xs' name=" + i + ">edit</button>";
-                document.getElementById("qstn").appendChild(div);
-                content = answer = "";
+        var content;
+        function getXMLHttpRequest() {
+            var xmlReq;
+            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlReq = new XMLHttpRequest();
+            } else {// code for IE6, IE5
+                xmlReq = new ActiveXObject("Microsoft.XMLHTTP");
             }
+            return xmlReq;
         }
-        function dle(i) {
+
+        $(function ajaxXML() {
+            var oReq = getXMLHttpRequest();
+            oReq.open("POST", "/QstnMt", true);
+            oReq.setRequestHeader("Content-type",
+                "application/x-www-form-urlencoded"); //提交表单必须
+            oReq.send();
+            oReq.onreadystatechange = function () {
+                if (oReq.readyState == 4 && oReq.status == 200) {
+                    var content = "";
+                    var answer = "";
+                    var type;
+                    var ele;
+                    var tagName;
+                    var i = 0;
+                    var id;
+                    var xmldoc = oReq.responseXML; //responseXML响应类型是XML文档
+                    console.log(xmldoc);
+                    var x = xmldoc.getElementsByTagName("question");
+                    for (var i = 0; i < x.length; i++) {
+                        var div = document.createElement("tr");
+                        div.setAttribute("qstnID", i);
+                        ele = x[i].firstElementChild;
+                        type = x[i].getAttribute("type");
+                        while (null != ele) {
+                            tagName = ele.nodeName;
+                            switch (tagName) {
+                                case "id":
+                                    id = ele.childNodes[0].nodeValue;
+                                    break;
+                                case "content":
+                                    content += ele.childNodes[0].nodeValue;
+                                    break;
+                                case "option":
+                                    content += "<br/>";
+                                    content += ele.childNodes[0].nodeValue;
+                                    break;
+                                case "answer":
+                                    answer += ele.childNodes[0].nodeValue;
+                                    break;
+                            }
+                            ele = ele.nextElementSibling;
+                        }
+
+                        div.innerHTML = "<td>" + id +
+                            "</td><td>" + type + "</td><td>" + content + "</td><td>" + answer + "</td><td>"
+                            + "<button onclick='del(" + i + ")' class='btn btn-xs btn-danger'name=" + i + ">delete</button>"
+                            + "<button onclick='edi(" + i + ")' class='btn btn-xs' name=" + i + ">edit</button>";
+                        document.getElementById("qstn").appendChild(div);
+                        content = answer = "";
+                    }
+                }
+            }
+        })
+        function del(i) {
             $.post("/QstnDelServlet", {
                     id: i
                 },
@@ -72,12 +82,17 @@
                     window.location.replace("exammaintain.html");
                 });
         }
+
         function edi(i) {
-            $(".panel").slideToggle("slow");
+            $.post("/QstnEdiServlet", {
+                id: i
+            });
         }
+
         function check_radio() {
             alert($('#sel').id);
         }
+
         function addBlank() {
             document.getElementById("fillcontent").value += "(____)";
         }
@@ -88,7 +103,7 @@
 <div id="wrapper">
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
+        <ul class="sidebar-">
             <li>
                 <a href="getclass.jsp">开课</a>
             </li>
@@ -140,7 +155,7 @@
                                 <form>
                                     <td>
                                         <label>id</label>
-                                        <input type="number" disabled="disabled" class="form-control">
+                                        <input type="number" class="form-control">
                                     </td>
                                     <td>
                                         <div class="btn-group">

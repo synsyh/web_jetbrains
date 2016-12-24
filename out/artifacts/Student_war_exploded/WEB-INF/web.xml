@@ -63,6 +63,10 @@
         <servlet-name>QstnEdiServlet</servlet-name>
         <servlet-class>servlet.QstnEdiServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>QstnMtServlet</servlet-name>
+        <servlet-class>servlet.QstnMtServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetQstnServlet</servlet-name>
         <url-pattern>/setexam</url-pattern>
@@ -82,5 +86,9 @@
     <servlet-mapping>
         <servlet-name>QstnEdiServlet</servlet-name>
         <url-pattern>/QstnEdiServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QstnMtServlet</servlet-name>
+        <url-pattern>/QstnMt</url-pattern>
     </servlet-mapping>
 </web-app>

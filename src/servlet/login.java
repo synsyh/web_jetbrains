@@ -30,10 +30,16 @@ public class login extends HttpServlet {
         System.out.println("用户名:"+userBean.getUsername());
         System.out.println("密码："+userBean.getPassword());
 
-        if (userBean.checkUser()){
+//        if (userBean.checkUser()){
+//            request.getRequestDispatcher("Stu_sys.jsp").forward(request, response);
+//        }
+        if (username.length()==4)
+            request.getRequestDispatcher("getclass.jsp").forward(request, response);
+        if (username.length()==5)
             request.getRequestDispatcher("Stu_sys.jsp").forward(request, response);
-        }
-        else request.getRequestDispatcher("login.jsp").forward(request, response);
+        if (username.length()==3)
+            request.getRequestDispatcher("c_check.html").forward(request, response);
+//        else request.getRequestDispatcher("login.jsp").forward(request, response);
 
     }
 

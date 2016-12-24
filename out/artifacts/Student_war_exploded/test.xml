@@ -22,8 +22,8 @@
         <id>7</id>
         <content>1、“大煮干丝”是哪个菜系的代表菜之一( )。</content>
         <option num="A">四川菜系</option>
-        <option num="B">山东菜系 </option>
-        <option num="C">广东菜系 </option>
+        <option num="B">山东菜系</option>
+        <option num="C">广东菜系</option>
         <option num="D">淮扬菜系</option>
         <stu_answer>a</stu_answer>
         <answer>D</answer>

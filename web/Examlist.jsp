@@ -26,7 +26,6 @@
         <title>考试列表</title>
 
         <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css"/>
-        <script type="text/javascript" src="Exam/js/examlist.js"></script>
         <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>
 //            $(function(){

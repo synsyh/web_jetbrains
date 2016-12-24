@@ -9,24 +9,32 @@
     <option num="C">hhhh</option>  
     <option num="D">rrr</option>  
     <answer>B</answer>  
-    <mark>20</mark> 
+    <stu_answer>a</stu_answer>  
+    <mark>20</mark>  
+    <stu_mark/> 
   </question>  
   <question type="fill"> 
     <id>7</id>  
     <content>asdfcxefwe</content>  
     <blank/>  
     <content>xcvbwer</content>  
-    <mark>20</mark> 
+    <stu_answer>sdafads</stu_answer>  
+    <mark>20</mark>  
+    <stu_mark/> 
   </question>  
   <question type="judge"> 
     <id>8</id>  
     <content>cxzvxvwrwerew</content>  
     <answer>true</answer>  
-    <mark>20</mark> 
+    <stu_answer>Y</stu_answer>  
+    <mark>20</mark>  
+    <stu_mark/> 
   </question>  
   <question type="describe"> 
     <id>3</id>  
     <content>df</content>  
-    <mark>40</mark> 
-  </question>
+    <mark>40</mark>  
+    <stu_mark/>  
+    <stu_answer>sdafasdf</stu_answer> 
+  </question> 
 </qamaitain>

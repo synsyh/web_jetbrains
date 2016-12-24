@@ -77,13 +77,11 @@ public class paperServlet extends HttpServlet {
             } catch (DocumentException e) {
                 e.printStackTrace();
             }
-            System.out.println(s_session.getToken(s_session.getUsername(session.getId())));
             if (s_session.getToken(s_session.getUsername(session.getId())) == 0.0) {
                 s_session.setToken(s_session.getUsername(session.getId()));
                 session.setAttribute("token", s_session.getToken(s_session.getUsername(session.getId())));
                 s_session.setExamid(request.getParameter("name"));
             }
-            System.out.println(s_session.getExamid());
             try {
                 session.setAttribute("time", s_session.getTime(s_session.getUsername(session.getId())));
             } catch (InterruptedException e) {

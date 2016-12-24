@@ -1,9 +1,11 @@
 package servlet;
 
 import Session.s_session;
+import javaBean.AddAswBean;
 import javaBean.Examlist;
 import javaBean.Login_db;
 import javaBean.Stu_info;
+import org.dom4j.DocumentException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +17,9 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by huozongsheng on 2016/12/6.
@@ -26,14 +31,34 @@ public class stu_sysServlet extends HttpServlet {
     HttpSession session;
     ArrayList<String[]> exam_detail = new ArrayList<>();
     String[] stu_detail = new String[4];
+    ArrayList<String> paper_id;
+    ArrayList<String[]> resultlist;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         session = request.getSession();
         System.out.println(session.getId());
         if (s_session.exists(session.getId()))
-            if (session.getAttribute("token").equals(s_session.getToken(s_session.getUsername(session.getId()))))
-            {
+            if (session.getAttribute("token").equals(s_session.getToken(s_session.getUsername(session.getId())))) {
                 System.out.println("学生试卷提交成功");
+                Enumeration s = request.getParameterNames();
+                paper_id = new ArrayList<>();
+                resultlist = new ArrayList<>();
+                while (s.hasMoreElements()) {
+                    paper_id.add(s.nextElement().toString());
+                    System.out.println(paper_id.get(0));
+                }
+                for (int i = 0; i < paper_id.size(); i++) {
+                    String[] temp = new String[2];
+                    temp[0] = paper_id.get(i);
+                    temp[1] = request.getParameter(paper_id.get(i));
+                    resultlist.add(temp);
+                }
+                AddAswBean addAswBean=new AddAswBean(s_session.getExamid(),s_session.getUsername(session.getId()),resultlist);
+                try {
+                    addAswBean.addAsw();
+                } catch (DocumentException e) {
+                    e.printStackTrace();
+                }
                 s_session.destoryToken(s_session.getUsername(session.getId()));
                 Login_db login_db = new Login_db();
                 try {
@@ -45,8 +70,7 @@ public class stu_sysServlet extends HttpServlet {
                 }
 
                 request.getRequestDispatcher("Stu_sys.jsp").forward(request, response);
-            }
-            else {
+            } else {
                 request.getRequestDispatcher("404.html").forward(request, response);
             }
 
@@ -148,6 +172,5 @@ public class stu_sysServlet extends HttpServlet {
             session.setAttribute("examlist", exam_detail);
             request.getRequestDispatcher("Stu_grade.jsp").forward(request, response);
         } else request.getRequestDispatcher("404.html").forward(request, response);
-
     }
 }

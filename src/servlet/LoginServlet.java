@@ -29,22 +29,27 @@ public class LoginServlet extends HttpServlet {
         String forward;
         // 如果登陆成功，把用户名写入session中，并且转向success.jsp，
         // 否则转向failure.jsp
-        if (b) {
-            // 获取session
-            HttpSession session = (HttpSession) request.getSession(true);
-            // 把用户名保存到session中
-            session.setAttribute("username", username);
-            // 目标转向文件是success.jsp
-            forward = "setexam.jsp";
-        } else {
-            // 目标转向文件是failure.jsp
-            forward = "failure.jsp";
+        if (username.length() == 4) {
+            forward = "getclass.jsp";
+        } else if (username.length() == 5) {
+            if (b) {
+                // 获取session
+                HttpSession session = (HttpSession) request.getSession(true);
+                // 把用户名保存到session中
+                session.setAttribute("username", username);
+                // 目标转向文件是success.jsp
+                forward = "setexam.jsp";
+            } else {
+                // 目标转向文件是failure.jsp
+                forward = "failure.jsp";
+            }
+            // 获取Dispatcher对象
+            RequestDispatcher dispatcher = request.getRequestDispatcher(forward);
+            // 完成跳转
+            dispatcher.forward(request, response);
         }
-        // 获取Dispatcher对象
-        RequestDispatcher dispatcher = request.getRequestDispatcher(forward);
-        // 完成跳转
-        dispatcher.forward(request, response);
     }
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);

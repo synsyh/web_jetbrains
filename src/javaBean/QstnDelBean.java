@@ -25,18 +25,14 @@ public class QstnDelBean {
     private Document doc = null;
     private Element root = null;
 
-    String filePath = separator + "Users" + separator +
-            "sunning" + separator + "IdeaProjects" + separator + "WebTest" + separator+"web"+separator;
+    String filePath = "/Users/sunning/Desktop/QA/";
+
     public void start() throws IOException, DocumentException {
         filePath += "test.xml";
         file = new File(filePath);
         SAXReader reader = new SAXReader();
         this.doc = reader.read(file);
         root = doc.getRootElement();
-//        document.addElement("qamaitain");
-//        writer = new XMLWriter(new FileWriter(file), this.setformat());
-//        writer.write(document);
-//        writer.close();
     }
 
     public QstnDelBean(String id) throws IOException, DocumentException {

@@ -294,21 +294,6 @@ public class SetPaperBean {
             root = doc.addElement(rootName);
         }
         return root;
-//        examQstnFilePath += className + ".xml";
-//        examFile = new File(examQstnFilePath);
-//        if (examFile.exists()) {
-//            SAXReader reader = new SAXReader();
-//            examQstnDoc = reader.read(examFile);
-//            examQstnRoot = examQstnDoc.getRootElement();
-//        } else {
-//            examQstnDoc = DocumentHelper.createDocument();
-//            examQstnRoot = examQstnDoc.addElement("qamaintain");
-//        }
-//        allQstnFilePath += "test.xml";
-//        qstnFile = new File(allQstnFilePath);
-//        SAXReader reader = new SAXReader();
-//        this.allQstnDoc = reader.read(qstnFile);
-//        allQstnRoot = allQstnDoc.getRootElement();
     }
 
     public void end(Document doc, File file) throws IOException {

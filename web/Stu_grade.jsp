@@ -58,48 +58,7 @@
     </table>
 </div>
 </body>
-<script>
-    //    $(function () {
-    //        var xhttp = new XMLHttpRequest();
-    //        xhttp.onreadystatechange = function () {
-    //            if (this.readyState == 4 && this.status == 200) {
-    //                get_XML(this);
-    //            }
-    //        };
-    //        xhttp.open("GET", "stu_grade.xml?t=" + Math.random(), true);
-    //        xhttp.send();
-    //    });
-    //    function get_XML(xml) {
-    //        var content = '';
-    //        var xmldoc = xml.responseXML;
-    //        var student = xmldoc.getElementsByTagName("stu");
-    //        for (var i = 0; i < student.length; i++) {
-    //
-    //            if (student[i].getElementsByTagName("id")[0].childNodes[0].nodeValue == "20141120165") //此处待替换为具体判断
-    //            {
-    //                document.getElementById("stu_name").innerHTML = student[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
-    //                var exam = student[i].getElementsByTagName("exam");
-    //                document.getElementById("grade").innerHTML = '<p>测试</p>';
-    //                for (var j = 0; j < exam.length; j++)
-    //                    content = content + '<tr>' +
-    //                        '<td class="active">' + exam[j].getElementsByTagName("name")[0].childNodes[0].nodeValue + '</td>' +
-    //                        '<td class="active">' + exam[j].getElementsByTagName("teacher")[0].childNodes[0].nodeValue + '</td>' +
-    //                        '<td class="active">' + exam[j].getElementsByTagName("descrip")[0].childNodes[0].nodeValue + '</td>' +
-    //                        '<td class="active">' + exam[j].getElementsByTagName("select")[0].childNodes[0].nodeValue + '</td>' +
-    //                        '<td class="active">' + exam[j].getElementsByTagName("fill")[0].childNodes[0].nodeValue + '</td>' +
-    //                        '<td class="active">' + exam[j].getElementsByTagName("judge")[0].childNodes[0].nodeValue + '</td>' +
-    //                        '<td class="active">' + exam[j].getElementsByTagName("grade")[0].childNodes[0].nodeValue + '</td>';
-    //            }
-    //  content = content+ '<tr>'+
-    //           '<td class="active">'+exam[i].getElementsByTagName("name")[0].childNodes[0].nodeValue+'</td>'+
-    //           '<td class="active">'+exam[i].getElementsByTagName("teacher")[0].childNodes[0].nodeValue+'</td>'+
-    //           '<td class="active">'+exam[i].getElementsByTagName("time")[0].childNodes[0].nodeValue+'</td>'+
-    //           '<td class="active">'+exam[i].getElementsByTagName("course")[0].childNodes[0].nodeValue+'</td>'+
-    //          '</tr>';
-    //        }
-    //        document.getElementById("grade").innerHTML = content;
-    //    }
-</script>
+
 <script>
     $(function () {
         var id = [];

@@ -67,6 +67,8 @@ public class QstnAdder {
 
         addNode(question, "id", String.valueOf(id));
         addNode(question, "content", content);
+        addNode(question,"stu_answer","");
+        addNode(question,"stu_mark","");
         end();
     }
 
@@ -81,6 +83,8 @@ public class QstnAdder {
         for (int i = 0; i < answer.length; i++) {
             addNode(question, "answer", answer[i]);
         }
+        addNode(question,"stu_answer","");
+        addNode(question,"stu_mark","");
         end();
     }
 
@@ -96,6 +100,8 @@ public class QstnAdder {
             addNode(question, "blank", "");
             addNode(question, "content", content[i].trim());
         }
+        addNode(question,"stu_answer","");
+        addNode(question,"stu_mark","");
         end();
     }
 
@@ -115,6 +121,8 @@ public class QstnAdder {
             addNode(question, "answer", answer[i]);
 
         }
+        addNode(question,"stu_answer","");
+        addNode(question,"stu_mark","");
         end();
     }
 

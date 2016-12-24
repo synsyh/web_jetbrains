@@ -37,11 +37,11 @@ public class QstnEdiBean {
 
     public QstnEdiBean(String id) throws IOException, DocumentException {
         start();
-        qstnDel(id);
+        qstnEdi(id);
         end();
     }
 
-    public void qstnDel(String id) {
+    public void qstnEdi(String id) {
         int qstnID = Integer.valueOf(id);
         List<Element> qstn = root.elements("question");
         qstn.remove(qstn.get(qstnID));
